@@ -19,7 +19,7 @@ In my opinion, not the most realistic example as it just promptly displays an in
  Here you go, copy the last three lines listed below and place them in your own pubspec.yaml file.
   You’re then on your way to storing preferences in your Flutter app.
   
-![pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788.js)  
+[pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788.js)  
   
 Better still, download the file, perfs.dart, as there’s no guarantee that repo.
 , perfs.git, will last forever.
