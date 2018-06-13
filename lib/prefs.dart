@@ -73,7 +73,7 @@ class Prefs {
   }
   /// Returns a Future.
   static Future<dynamic> getF(String key) async {
-    bool value;
+    dynamic value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
       value = instance.get(key);
