@@ -36,9 +36,10 @@ class Prefs {
   static bool _initCalled = false;
 
   /// Initialize the SharedPreferences object in the State object's iniState() function.
-  static void init() async{
+  static Future<SharedPreferences> init() async{
     _initCalled = true;
     _prefsInstance = await _prefs;
+    return _prefs;
   }
 
   /// Best to clean up by calling this function in the State object's dispose() function.
@@ -58,7 +59,7 @@ class Prefs {
     Set<String> value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.getKeys() ?? Set();
+      value = instance?.getKeys() ?? Set();
     } else {
       value = getKeys();
     }
@@ -76,7 +77,7 @@ class Prefs {
     dynamic value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.get(key);
+      value = instance?.get(key);
     } else {
       value = get(key);
     }
@@ -93,7 +94,7 @@ class Prefs {
     bool value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.getBool(key) ?? false;
+      value = instance?.getBool(key) ?? false;
     } else {
       value = getBool(key);
     }
@@ -110,7 +111,7 @@ class Prefs {
     int value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.getInt(key) ?? 0;
+      value = instance?.getInt(key) ?? 0;
     } else {
       value = getInt(key);
     }
@@ -127,7 +128,7 @@ class Prefs {
     double value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.getDouble(key) ?? 0.0;
+      value = instance?.getDouble(key) ?? 0.0;
     } else {
       value = getDouble(key);
     }
@@ -144,7 +145,7 @@ class Prefs {
     String value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.getString(key) ?? "";
+      value = instance?.getString(key) ?? "";
     } else {
       value = getString(key);
     }
@@ -161,7 +162,7 @@ class Prefs {
     List<String> value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
-      value = instance.getStringList(key) ?? [""];
+      value = instance?.getStringList(key) ?? [""];
     } else {
       value = getStringList(key);
     }
@@ -172,14 +173,14 @@ class Prefs {
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setBool(String key, bool value) async {
     var instance = await _prefs;
-    return instance.setBool(key, value);
+    return instance?.setBool(key, value);
   }
 
   /// Saves an integer [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setInt(String key, int value) async {
     var instance = await _prefs;
-    return instance.setInt(key, value);
+    return instance?.setInt(key, value);
   }
 
   /// Saves a double [value] to persistent storage in the background.
@@ -187,32 +188,32 @@ class Prefs {
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setDouble(String key, double value) async {
     var instance = await _prefs;
-    return instance.setDouble(key, value);
+    return instance?.setDouble(key, value);
   }
 
   /// Saves a string [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setString(String key, String value) async {
     var instance = await _prefs;
-    return instance.setString(key, value);
+    return instance?.setString(key, value);
   }
 
   /// Saves a list of strings [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setStringList(String key, List<String> value) async {
     var instance = await _prefs;
-    return instance.setStringList(key, value);
+    return instance?.setStringList(key, value);
   }
 
   /// Removes an entry from persistent storage.
   static Future<bool> remove(String key) async {
     var instance = await _prefs;
-    return instance.remove(key);
+    return instance?.remove(key);
   }
 
   /// Completes with true once the user preferences for the app has been cleared.
   static Future<bool> clear() async {
     var instance = await _prefs;
-    return instance.clear();
+    return instance?.clear();
   }
 }
