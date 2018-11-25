@@ -8,7 +8,7 @@ the SharedPreferences (on Android), providing persistent storage. Note, as of th
 the plugin does not guarantee its writes to disk and suggests it not be used for storing 
 critical data. As it is, it’s worked for me so far. So much so, I’ve adapted it fully for my apps.
 
-![Prefs Logo](test/images/01PrefsLogo.png)
+![Prefs Logo](https://user-images.githubusercontent.com/32497443/48974550-90986800-f02a-11e8-921e-4687c666e1a6.png)
 
 ## There’s a Class for That
 There’s an example provided by the plugin website demonstrating how the plugin is implemented. 
@@ -19,7 +19,8 @@ In my opinion, not the most realistic example as it just promptly displays an in
  Here you go, copy the last three lines listed below and place them in your own pubspec.yaml file.
   You’re then on your way to storing preferences in your Flutter app.
   
-![pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788)  
+![pubspec.yaml](https://user-images.githubusercontent.com/32497443/48974510-a0fc1300-f029-11e8-9f36-07ef38249fb3.png)
+[pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788)
   
 Better still, download the file, perfs.dart, as there’s no guarantee that repo.
 , perfs.git, will last forever.
@@ -33,7 +34,7 @@ behind the scenes when it comes to using the plugin. As a result, there are five
 in all required to implement and to demonstrate the app’s preferences storage and 
 retrieval capabilities.
  
-![Take Five](test/images/02TakeFive.png) 
+![Take Five](https://user-images.githubusercontent.com/32497443/48974551-9130fe80-f02a-11e8-8774-2f8b29c67960.png) 
 
 ## What’s Going On Here
 After looking over the code above, there are a few things you will have noticed regarding
@@ -65,11 +66,11 @@ this example uses a Future object of type Future<int> in a ‘library-private’
  assigned a value in the State object’s initState() function. 
  However, you’ll find that, in the original, the code is a little more verbose:
  
-![Prefs Logo](test/images/03InitPrefs.png) 
+![Prefs Logo](https://user-images.githubusercontent.com/32497443/48974552-9130fe80-f02a-11e8-8e48-d817e2097fdd.png) 
  
 In our example, the code does the very same thing, but it’s little cleaner:
 
-![Prefs Logo](test/images/04getIntF.png)  
+![Prefs Logo](https://user-images.githubusercontent.com/32497443/48974553-9130fe80-f02a-11e8-8551-ddac578ccdd1.png)  
 
 It too returns a ‘Future’ object of type integer — a value of zero if the ‘counter’
 key returns null. Returning null means there is no preference value with that
@@ -87,11 +88,11 @@ A Future object of type integer can not be incremented like a numeric,
 and so we have ‘to wait’ for a ‘SharedPreferences’ object to be instantiated, 
 then retrieve a value if any by the key, ‘counter’, and then increment the value by one: 
    
-![incrementCounter](test/images/05incrementCounter.png)     
+![incrementCounter](https://user-images.githubusercontent.com/32497443/48974554-91c99500-f02a-11e8-8326-b6f053e065c4.png)     
    
 In our example, we’ve got it down to one short line of code:
 
-![new increment](test/images/06incrementCounter.png) 
+![new increment](https://user-images.githubusercontent.com/32497443/48974555-91c99500-f02a-11e8-9aeb-fba4a5335d37.png) 
 
 Retrieving integer values from your app’s preferences is going to be a common operation.
 Best to write a function that repeatedly takes care of the details and, 
@@ -104,7 +105,7 @@ You can readily tell that by the declaration of the variable, counter,
 Further on in the original example, the setState() function is called
  to ‘update’ the counter on the app’s screen:    
  
-![original setState](test/images/07incrementCounter.png)  
+![original setState](https://user-images.githubusercontent.com/32497443/48974556-91c99500-f02a-11e8-8812-4ad45fe7fcf3.png)  
  
 In our example, you see the code does the very same thing, but this code doesn’t 
 require the parent function, _incrementCounter(), to use the async keyword. 
@@ -113,47 +114,47 @@ There’s no await command being used. Nor does it reveal that it’s
 Instead, you’re allowed to call this function any time; any where. 
 Much cleaner and much easier to use.
 
-![new setState](test/images/08incrementCounter.png)  
+![new setState](https://user-images.githubusercontent.com/32497443/48974557-91c99500-f02a-11e8-8724-595905c04e2f.png)  
 
 As an aside, note the use of the ‘return’ statement allows you to assign, in this case,
  an integer value to the Future object, _counter. 
  As you see, you can’t assign the integer value directly to a variable,
   _counter, of type Future<int>. 
   
-![Future Error](test/images/09incrementCounter.png)    
+![Future Error](https://user-images.githubusercontent.com/32497443/48974558-91c99500-f02a-11e8-8c0a-14b59c03ec72.png)    
   
 ## You Get Ten
 You can see below all the ‘get’ functions available to the developer when using this class
  library. The first five returns the data type implied in each of the function’s names, 
  while each then has their ‘Future’ counterpart in the remaining five functions.  
  
-![Ten Gets](test/images/10GetTen.png) 
+![Ten Gets](https://user-images.githubusercontent.com/32497443/48974559-91c99500-f02a-11e8-995d-41534678c544.png) 
  
 ## Here’s the Keys
 You’ve access to all the keys that can be found in your preferences.
 Like the ‘get’ functions, you have the option to return a ‘Future’ type 
 of the set of Strings as well. 
 
-![Get Keys](test/images/11getKeys.png) 
+![Get Keys](https://user-images.githubusercontent.com/32497443/48974560-92622b80-f02a-11e8-84dd-9ce2da031bf7.png) 
 
 ## Let’s Get Dynamic
 If you like, you don’t have to be concerned with the ‘data type’ of the preference 
 value and simply call the ‘get’ functions. Again, a ‘Future’ version is available.
 
-![Get Dynamic](test/images/12getDynamic.png) 
+![Get Dynamic](https://user-images.githubusercontent.com/32497443/48974561-92622b80-f02a-11e8-8e2c-8c5654592788.png) 
 
 ## It’s All Set Up
 Along with the first five ‘get’ functions there is a corresponding ‘set’ function.
 Each writes a particular data type to persistent storage. 
-With a successful write, a ‘Future’ data type of Boolean is returned, ‘Future<bool>.’
+With a successful write, a Future data type of ‘bool’ is returned.
 
-![Set Functions](test/images/13setUp.png) 
+![Set Functions](https://user-images.githubusercontent.com/32497443/48974562-92622b80-f02a-11e8-898d-ac51886835b1.png) 
 
 ## Remove and Clear
 You have a means to remove a specific preference and or clear out all the 
-preferences with one command. They too return the type, ‘Future<bool>.’
+preferences with one command. They too return a Future of type, ‘bool.’
 
-![Remove Function](test/images/14remove.png) 
+![Remove Function](https://user-images.githubusercontent.com/32497443/48974563-92622b80-f02a-11e8-9400-0d9e46b24fea.png) 
 
 ## Conclusion
 There you have it. Take this class library, and use it for your app’s preferences.
