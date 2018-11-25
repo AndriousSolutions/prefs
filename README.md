@@ -2,7 +2,7 @@
 ###### A Flutter Example
 
 ## What’s Your Preference?
-The plugin, shared_preferences, is offered to Flutter developers to store and read their app’s 
+The plugin, [shared_preferences](https://pub.dartlang.org/packages/shared_preferences), is offered to Flutter developers to store and read their app’s 
 preferences in both the Android and the iOS platform. It wraps the NSUserDefaults (on iOS) and 
 the SharedPreferences (on Android), providing persistent storage. Note, as of this writing, 
 the plugin does not guarantee its writes to disk and suggests it not be used for storing 
@@ -19,7 +19,7 @@ In my opinion, not the most realistic example as it just promptly displays an in
  Here you go, copy the last three lines listed below and place them in your own pubspec.yaml file.
   You’re then on your way to storing preferences in your Flutter app.
   
-[pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788.js)  
+![pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788)  
   
 Better still, download the file, perfs.dart, as there’s no guarantee that repo.
 , perfs.git, will last forever.
@@ -145,20 +145,17 @@ value and simply call the ‘get’ functions. Again, a ‘Future’ version is 
 ## It’s All Set Up
 Along with the first five ‘get’ functions there is a corresponding ‘set’ function.
 Each writes a particular data type to persistent storage. 
-With a successful write, a ‘Future’ data type of Boolean is returned, Future<bool>.
+With a successful write, a ‘Future’ data type of Boolean is returned, ‘Future<bool>.’
 
 ![Set Functions](test/images/13setUp.png) 
 
 ## Remove and Clear
 You have a means to remove a specific preference and or clear out all the 
-preferences with one command. They too return the type, Future<bool>.
+preferences with one command. They too return the type, ‘Future<bool>.’
 
 ![Remove Function](test/images/14remove.png) 
 
 ## Conclusion
 There you have it. Take this class library, and use it for your app’s preferences.
-Better still. Take it, make it better, and then share.
-In a future article, as I usually do, I will walk through the class library and 
-explain how I implemented this class, and why I did it the way I did it. 
-Regardless, this effort is my little way of contributing the fledgling 
-Flutter community.
+An extensive walkthrough the library package can be found in the Medium article, 
+[A Flutter Class for Your App’s Preferences.](https://medium.com/@greg.perry/a-flutter-class-for-app-preferences-a256166ecc63)
