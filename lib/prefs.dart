@@ -19,6 +19,8 @@
 ///
 ///          Created  05 Jun 2018
 ///
+/// Github: https://github.com/AndriousSolutions/prefs
+///
 library prefs;
 
 import 'dart:async';
