@@ -38,10 +38,9 @@ class Prefs {
   static bool _initCalled = false;
 
   /// Initialize the SharedPreferences object in the State object's iniState() function.
-  static Future<SharedPreferences> init() async{
+  static Future<void> init() async{
     _initCalled = true;
     _prefsInstance = await _prefs;
-    return _prefs;
   }
 
   /// Best to clean up by calling this function in the State object's dispose() function.
