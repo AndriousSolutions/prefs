@@ -1,4 +1,3 @@
-
 import 'dart:async' show Future;
 
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   // Define our test key
   final keyCounter = Key('counter');
 
@@ -36,7 +34,7 @@ class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
   void _incrementCounter() {
     final int counter = Prefs.getInt('counter') + 1;
     setState(() {
-        _counter = Prefs.setInt('counter', counter).then((_) {
+      _counter = Prefs.setInt('counter', counter).then((_) {
         return counter;
       });
     });
@@ -50,7 +48,7 @@ class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     Prefs.dispose();
     super.dispose();
   }
@@ -73,7 +71,7 @@ class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
                       return new Text('Error: ${snapshot.error}');
                     else
                       return new Text(
-                        'Button tapped ${snapshot.data} time${ snapshot.data == 1 ? '' : 's' }.\n\n'
+                        'Button tapped ${snapshot.data} time${snapshot.data == 1 ? '' : 's'}.\n\n'
                             'This should persist across restarts.',
                         key: widget.keyCount,
                       );

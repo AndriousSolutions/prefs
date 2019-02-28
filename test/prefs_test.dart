@@ -11,7 +11,6 @@ import 'dart:async' show Future;
 
 import 'package:prefs/prefs.dart';
 
-
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
 //
@@ -43,11 +42,7 @@ void main() {
   });
 }
 
-
-
-
 class MyApp extends StatelessWidget {
-
   // Define our test key
   final keyCounter = Key('counter');
 
@@ -87,7 +82,7 @@ class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     Prefs.dispose();
     super.dispose();
   }
@@ -110,7 +105,7 @@ class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
                       return new Text('Error: ${snapshot.error}');
                     else
                       return new Text(
-                        'Button tapped ${snapshot.data} time${ snapshot.data == 1 ? '' : 's' }.\n\n'
+                        'Button tapped ${snapshot.data} time${snapshot.data == 1 ? '' : 's'}.\n\n'
                             'This should persist across restarts.',
                         key: widget.keyCount,
                       );

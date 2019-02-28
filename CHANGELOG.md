@@ -4,7 +4,7 @@
 #### [0.2.0] - Feb. ‎09, ‎2019 static Future<SharedPreferences> init() async {
 #### [1.0.0] - Feb. ‎27, ‎Initial Library Package Release
 #### [1.0.1] - Feb. ‎28, Provide an example and a test 
-
+#### [1.0.2] - Feb. ‎28, Flutter format  homepage: in pubspec.yaml
 
 
 
