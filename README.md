@@ -16,16 +16,6 @@ In my opinion, not the most realistic example as it just promptly displays an in
  the success of its persistent storage. Regardless, I will use this same example now in this 
  article to further demonstrate the use of a class library called, prefs.dart, that I freely 
  offer to other developers to quickly and easily implement stored preferences in their app’s. 
- Here you go, copy the last three lines listed below and place them in your own pubspec.yaml file.
-  You’re then on your way to storing preferences in your Flutter app.
-  
-![pubspec.yaml](https://user-images.githubusercontent.com/32497443/48974510-a0fc1300-f029-11e8-9f36-07ef38249fb3.png)
-[pubspec.yaml](https://gist.github.com/Andrious/452d230c0a2cbd1cd058a0fc3ab6d788)
-  
-Better still, download the file, perfs.dart, as there’s no guarantee that repo.
-, perfs.git, will last forever.
-
-This Dart library is under the APACHE license. It’s free! Take it, make it better and then share.
 
 ## Take Five
 Below is the main.dart file that is very much like the example found in the plugin website. 

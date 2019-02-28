@@ -1,8 +1,7 @@
 name: prefs
-description: Application Preferences Class Library
-version: 1.0.0
+description: A Library Package that utilizes the plugin, shared_preferences, to store and read an app’s preferences in both the Android and the iOS platform.
+version: 1.0.1
 author: Greg Perry <support@andrioussolutions.com>
-homepage: http://www.andrioussolutions.com
 repository: https://github.com/AndriousSolutions/prefs
 
 environment:
