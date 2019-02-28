@@ -23,9 +23,9 @@
 ///
 library prefs;
 
-import 'dart:async';
+import 'dart:async' show Future;
 
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
 
 /// The App's Preferences.
 class Prefs {

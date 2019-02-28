@@ -160,7 +160,3 @@ preferences with one command. They too return a Future of type, ‘bool.’
 There you have it. Take this class library, and use it for your app’s preferences.
 An extensive walkthrough the library package can be found in the Medium article, 
 [A Flutter Class for Your App’s Preferences.](https://medium.com/@greg.perry/a-flutter-class-for-app-preferences-a256166ecc63)
-# DECODE Flutter
-##### Live Streaming every week. Everything to do about Flutter. 
-[![twitch](https://user-images.githubusercontent.com/32497443/49753449-7349d780-fc81-11e8-9d08-89146a6731c8.png)
-](https://medium.com/@greg.perry/decode-flutter-6b60a3199e83)
