@@ -2,7 +2,7 @@ name: prefs
 description: Application Preferences Class Library
 version: 1.0.0
 author: Greg Perry <support@andrioussolutions.com>
-homepage: www.andrioussolutions.com
+homepage: http://www.andrioussolutions.com
 repository: https://github.com/AndriousSolutions/prefs
 
 environment:

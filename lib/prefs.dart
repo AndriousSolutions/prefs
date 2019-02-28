@@ -1,5 +1,5 @@
 ///
-/// Copyright (C) 2018 Andrious Solutions
+/// Copyright (C) 2018 Andrious Solutions Ltd.
 ///
 /// This program is free software; you can redistribute it and/or
 /// modify it under the terms of the GNU General Public License
@@ -25,11 +25,11 @@ library prefs;
 
 import 'dart:async' show Future;
 
-import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
+import 'package:shared_preferences/shared_preferences.dart'
+    show SharedPreferences;
 
 /// The App's Preferences.
 class Prefs {
-
   static Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   static SharedPreferences _prefsInstance;
@@ -45,17 +45,20 @@ class Prefs {
   }
 
   /// Best to clean up by calling this function in the State object's dispose() function.
-  static void dispose(){
+  static void dispose() {
     _prefs = null;
     _prefsInstance = null;
   }
 
   /// Returns all keys in the persistent storage.
-  static Set<String> getKeys(){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getKeysF() instead. SharedPreferences not ready yet!");
+  static Set<String> getKeys() {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getKeysF() instead. SharedPreferences not ready yet!");
     return _prefsInstance.getKeys();
   }
+
   /// Returns a Future.
   static Future<Set<String>> getKeysF() async {
     Set<String> value;
@@ -69,11 +72,14 @@ class Prefs {
   }
 
   /// Reads a value of any type from persistent storage.
-  static dynamic get(String key){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getF(key) instead. SharedPreferences not ready yet!");
+  static dynamic get(String key) {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getF(key) instead. SharedPreferences not ready yet!");
     return _prefsInstance.get(key);
   }
+
   /// Returns a Future.
   static Future<dynamic> getF(String key) async {
     dynamic value;
@@ -86,11 +92,14 @@ class Prefs {
     return value;
   }
 
-  static bool getBool(String key, [bool defValue]){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getBoolF(key) instead. SharedPreferences not ready yet!");
+  static bool getBool(String key, [bool defValue]) {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getBoolF(key) instead. SharedPreferences not ready yet!");
     return _prefsInstance.getBool(key) ?? defValue ?? false;
   }
+
   /// Returns a Future.
   static Future<bool> getBoolF(String key, [bool defValue]) async {
     bool value;
@@ -103,11 +112,14 @@ class Prefs {
     return value;
   }
 
-  static int getInt(String key, [int defValue]){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getIntF(key) instead. SharedPreferences not ready yet!");
+  static int getInt(String key, [int defValue]) {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getIntF(key) instead. SharedPreferences not ready yet!");
     return _prefsInstance.getInt(key) ?? defValue ?? 0;
   }
+
   /// Returns a Future.
   static Future<int> getIntF(String key, [int defValue]) async {
     int value;
@@ -120,11 +132,14 @@ class Prefs {
     return value;
   }
 
-  static double getDouble(String key, [double defValue]){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getDoubleF(key) instead. SharedPreferences not ready yet!");
+  static double getDouble(String key, [double defValue]) {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getDoubleF(key) instead. SharedPreferences not ready yet!");
     return _prefsInstance.getDouble(key) ?? defValue ?? 0.0;
   }
+
   /// Returns a Future.
   static Future<double> getDoubleF(String key, [double defValue]) async {
     double value;
@@ -137,11 +152,14 @@ class Prefs {
     return value;
   }
 
-  static String getString(String key, [String defValue]){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getStringF(key)instead. SharedPreferences not ready yet!");
+  static String getString(String key, [String defValue]) {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getStringF(key)instead. SharedPreferences not ready yet!");
     return _prefsInstance.getString(key) ?? defValue ?? "";
   }
+
   /// Returns a Future.
   static Future<String> getStringF(String key, [String defValue]) async {
     String value;
@@ -154,13 +172,17 @@ class Prefs {
     return value;
   }
 
-  static List<String> getStringList(String key, [List<String> defValue]){
-    assert(_initCalled, "Prefs.init() must be called first in an initState() preferably!");
-    assert(_prefsInstance != null, "Maybe call Prefs.getStringListF(key) instead. SharedPreferences not ready yet!");
+  static List<String> getStringList(String key, [List<String> defValue]) {
+    assert(_initCalled,
+        "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+        "Maybe call Prefs.getStringListF(key) instead. SharedPreferences not ready yet!");
     return _prefsInstance.getStringList(key) ?? defValue ?? [""];
   }
+
   /// Returns a Future.
-  static Future<List<String>> getStringListF(String key, [List<String> defValue]) async {
+  static Future<List<String>> getStringListF(String key,
+      [List<String> defValue]) async {
     List<String> value;
     if (_prefsInstance == null) {
       var instance = await _prefs;
