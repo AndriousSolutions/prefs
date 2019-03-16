@@ -13,7 +13,6 @@ import 'package:prefs/prefs.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-//
 //    MyApp app = MyApp();
 //
 //    // Build our app and trigger a frame.
