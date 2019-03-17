@@ -32,5 +32,7 @@
  Mar. 15, 2019
 -  sdk: '>=2.1.0 <3.0.0'
 
-
+## 1.0.4
+ Mar. 16, 2019
+- Update the homepage field from pubspec.yaml
 
