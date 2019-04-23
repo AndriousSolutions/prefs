@@ -1,3 +1,7 @@
+## 2.1.0
+ Apr. 22, 2019
+-  static Future<SharedPreferences> get instance
+
 ## 2.0.0
  Apr. 22, 2019
 - *New* getter await SharedPreferences.getInstance();
