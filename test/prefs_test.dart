@@ -105,7 +105,7 @@ class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
                     else
                       return new Text(
                         'Button tapped ${snapshot.data} time${snapshot.data == 1 ? '' : 's'}.\n\n'
-                            'This should persist across restarts.',
+                        'This should persist across restarts.',
                         key: widget.keyCount,
                       );
                 }

@@ -30,7 +30,9 @@ import 'package:shared_preferences/shared_preferences.dart'
 
 /// The App's Preferences.
 class Prefs {
-  static Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  static Future<SharedPreferences> get prefs async =>
+      _prefs ??= await SharedPreferences.getInstance();
+  static SharedPreferences _prefs;
 
   static SharedPreferences _prefsInstance;
 
@@ -40,7 +42,7 @@ class Prefs {
   /// Initialize the SharedPreferences object in the State object's iniState() function.
   static Future<SharedPreferences> init() async {
     _initCalled = true;
-    _prefsInstance = await _prefs;
+    _prefsInstance = await prefs;
     return _prefsInstance;
   }
 
@@ -63,7 +65,7 @@ class Prefs {
   static Future<Set<String>> getKeysF() async {
     Set<String> value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.getKeys() ?? Set();
     } else {
       value = getKeys();
@@ -84,7 +86,7 @@ class Prefs {
   static Future<dynamic> getF(String key) async {
     dynamic value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.get(key);
     } else {
       value = get(key);
@@ -104,7 +106,7 @@ class Prefs {
   static Future<bool> getBoolF(String key, [bool defValue]) async {
     bool value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.getBool(key) ?? defValue ?? false;
     } else {
       value = getBool(key);
@@ -124,7 +126,7 @@ class Prefs {
   static Future<int> getIntF(String key, [int defValue]) async {
     int value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.getInt(key) ?? defValue ?? 0;
     } else {
       value = getInt(key);
@@ -144,7 +146,7 @@ class Prefs {
   static Future<double> getDoubleF(String key, [double defValue]) async {
     double value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.getDouble(key) ?? defValue ?? 0.0;
     } else {
       value = getDouble(key);
@@ -164,7 +166,7 @@ class Prefs {
   static Future<String> getStringF(String key, [String defValue]) async {
     String value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.getString(key) ?? defValue ?? "";
     } else {
       value = getString(key);
@@ -185,7 +187,7 @@ class Prefs {
       [List<String> defValue]) async {
     List<String> value;
     if (_prefsInstance == null) {
-      var instance = await _prefs;
+      var instance = await prefs;
       value = instance?.getStringList(key) ?? defValue ?? [""];
     } else {
       value = getStringList(key);
@@ -196,14 +198,14 @@ class Prefs {
   /// Saves a boolean [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setBool(String key, bool value) async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.setBool(key, value) ?? Future.value(false);
   }
 
   /// Saves an integer [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setInt(String key, int value) async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.setInt(key, value) ?? Future.value(false);
   }
 
@@ -211,33 +213,33 @@ class Prefs {
   /// Android doesn't support storing doubles, so it will be stored as a float.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setDouble(String key, double value) async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.setDouble(key, value) ?? Future.value(false);
   }
 
   /// Saves a string [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setString(String key, String value) async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.setString(key, value) ?? Future.value(false);
   }
 
   /// Saves a list of strings [value] to persistent storage in the background.
   /// If [value] is null, this is equivalent to calling [remove()] on the [key].
   static Future<bool> setStringList(String key, List<String> value) async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.setStringList(key, value) ?? Future.value(false);
   }
 
   /// Removes an entry from persistent storage.
   static Future<bool> remove(String key) async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.remove(key) ?? Future.value(false);
   }
 
   /// Completes with true once the user preferences for the app has been cleared.
   static Future<bool> clear() async {
-    var instance = await _prefs;
+    var instance = await prefs;
     return instance?.clear() ?? Future.value(false);
   }
 }

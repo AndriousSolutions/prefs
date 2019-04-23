@@ -1,6 +1,6 @@
 name: prefs
 description: A Library Package that utilizes the plugin, shared_preferences, to store and read an app’s preferences in both the Android and the iOS platform.
-version: 1.0.4
+version: 2.0.0
 author: Greg Perry <support@andrioussolutions.com>
 homepage: https://github.com/AndriousSolutions/prefs
 repository: https://github.com/AndriousSolutions/prefs
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
 # https://pub.dartlang.org/packages/shared_preferences#-changelog-tab-
-  shared_preferences: ^0.5.1+2
+  shared_preferences: ^0.5.2
 
 dev_dependencies:
   flutter_test:
