@@ -1,10 +1,14 @@
+## 3.0.0
+ Apr. 23, 2019
+- *Breaking Change* Make variable, instance, private with _instance to prevent possible memory leak.
+
 ## 2.1.0
  Apr. 22, 2019
--  static Future<SharedPreferences> get instance
+- static Future<SharedPreferences> get instance
 
 ## 2.0.0
  Apr. 22, 2019
-- *New* getter await SharedPreferences.getInstance();
+- *New* getter, prefs, for await SharedPreferences.getInstance();
 - getter allows for Hot Reload
 - Upgrade to shared_preferences 0.5.2
 
@@ -14,7 +18,7 @@
 
 ## 1.0.3
  Mar. 15, 2019
--  sdk: '>=2.1.0 <3.0.0'
+- sdk: '>=2.1.0 <3.0.0'
 
 ## 1.0.2
  Feb. ‎28, 2019
