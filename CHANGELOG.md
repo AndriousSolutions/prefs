@@ -1,3 +1,8 @@
+## 3.1.0
+ March 13, 2020
+- Introduced Prefs.containsKey('key_string') method
+- sdk: '>=2.6.0 <3.0.0'
+
 ## 3.0.1
  Feb. 03, 2020
 - **Important Fix** Return 'default value' in 'Future' Preference calls. (i.e. Prefs.getStringF())

@@ -73,7 +73,28 @@ class Prefs {
     return value;
   }
 
-  /// Reads a value of any type from persistent storage.
+  /// Returns true if persistent storage the contains the given [key].
+  static bool containsKey(String key) {
+    assert(_initCalled,
+    "Prefs.init() must be called first in an initState() preferably!");
+    assert(_prefsInstance != null,
+    "Maybe call Prefs.containsKeyF() instead. SharedPreferences not ready yet!");
+    return _prefsInstance.containsKey(key);
+  }
+
+  /// Returns true if persistent storage the contains the given [key].
+  static Future<bool> containsKeyF(String key) async {
+    bool contains;
+    if (_prefsInstance == null) {
+      var prefs = await _instance;
+      contains = prefs?.containsKey(key);
+    } else {
+      contains = _prefsInstance.containsKey(key);
+    }
+    return contains;
+  }
+
+      /// Reads a value of any type from persistent storage.
   static dynamic get(String key) {
     assert(_initCalled,
         "Prefs.init() must be called first in an initState() preferably!");
