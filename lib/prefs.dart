@@ -28,6 +28,10 @@ import 'dart:async' show Future;
 import 'package:shared_preferences/shared_preferences.dart'
     show SharedPreferences;
 
+// Export here so the user doesn't have to.
+export 'package:shared_preferences/shared_preferences.dart'
+    show SharedPreferences;
+
 /// The App's Preferences.
 class Prefs {
   static Future<SharedPreferences> get _instance async =>

@@ -1,3 +1,7 @@
+## 3.2.0
+ April 26, 2020
+- Export SharedPreferences
+
 ## 3.1.0
  March 13, 2020
 - Introduced Prefs.containsKey('key_string') method

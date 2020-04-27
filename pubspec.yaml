@@ -1,6 +1,6 @@
 name: prefs
 description: A Library Package that utilizes the plugin, shared_preferences, to store and read an app’s preferences in both the Android and the iOS platform.
-version: 3.1.0
+version: 3.2.0
 author: Greg Perry <support@andrioussolutions.com>
 homepage: https://github.com/AndriousSolutions/prefs
 repository: https://github.com/AndriousSolutions/prefs
