@@ -21,6 +21,3 @@ _incrementCounter() async {
   print('Pressed $counter times.');
   Prefs.setInt('counter', counter);
 }
-
-
-

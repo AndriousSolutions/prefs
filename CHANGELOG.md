@@ -1,3 +1,7 @@
+## 3.2.1
+ June 04, 2020
+- Corrected Apache Licence
+
 ## 3.2.0
  April 26, 2020
 - Export SharedPreferences
