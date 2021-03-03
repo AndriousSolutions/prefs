@@ -6,7 +6,7 @@ void main() {
   runApp(MaterialApp(
     home: Scaffold(
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: _incrementCounter,
           child: Text('Increment Counter'),
         ),

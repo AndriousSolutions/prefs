@@ -55,14 +55,14 @@ class MyApp extends StatelessWidget {
 }
 
 class SharedPreferencesDemo extends StatefulWidget {
-  SharedPreferencesDemo({this.keyCount, Key key}) : super(key: key);
-  final Key keyCount;
+  SharedPreferencesDemo({this.keyCount, Key? key}) : super(key: key);
+  final Key? keyCount;
   @override
   SharedPreferencesDemoState createState() => new SharedPreferencesDemoState();
 }
 
 class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
-  Future<int> _counter;
+  Future<int>? _counter;
 
   void _incrementCounter() {
     final int counter = Prefs.getInt('counter') + 1;
