@@ -1,3 +1,8 @@
+
+## 3.3.0
+- Upgraded to Dart SDK 2.12.0
+- Migrated the package to null safety thanks to Todd Krokowski
+
 ## 3.2.1
  June 04, 2020
 - Corrected Apache Licence
