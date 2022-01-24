@@ -1,5 +1,13 @@
 
-## 3.3.0
+## 3.4.0
+ January 22, 2022
+- sdk: '>=2.15.1 <3.0.0'
+- static Future<SharedPreferences> get INSTANCE
+- key parameter can be null.
+- Improved example app & integration testing
+
+## 3.3.0  Null safety
+ March 04, 2021
 - Upgraded to Dart SDK 2.12.0
 - Migrated the package to null safety thanks to Todd Krokowski
 
