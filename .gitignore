@@ -1,11 +1,9 @@
 # Good to keep this file with the code.
-.gitignore
+#.gitignore
 .pubignore
 
-### Added so the example app will run.
 analysis_options.yaml
-pubspec.yaml
-README.md
+
 ### Ignore except for application packages
 pubspec.lock
 
@@ -37,10 +35,6 @@ doc/api/
 *.js.deps
 *.js.map
 
-## Explicitly include the example app
-!example/**
-!example/.*
-example/ios/Flutter/flutter_export_environment.sh
 
 ### Eclipse ###
 *.pydevproject

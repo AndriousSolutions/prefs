@@ -1,4 +1,10 @@
 
+## 3.5.0
+ March 28, 2022
+- Return default value if _prefsInstance is null in production.
+- initCalled() true if init() was called.
+- ready() true if _prefsInstance is not null.
+
 ## 3.4.0+01
  January 22, 2022
 - sdk: '>=2.15.1 <3.0.0'
