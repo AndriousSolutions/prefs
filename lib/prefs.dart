@@ -29,10 +29,16 @@ import 'package:shared_preferences/shared_preferences.dart'
 export 'package:shared_preferences/shared_preferences.dart'
     show SharedPreferences;
 
+// ignore: avoid_classes_with_only_static_members
 /// The App's Preferences.
 class Prefs {
-  //
-  static Future<SharedPreferences> get INSTANCE async =>
+  ///
+  @Deprecated("Use lowercase getter 'instance' instead.")
+  // ignore: non_constant_identifier_names
+  static Future<SharedPreferences> get INSTANCE async => instance;
+
+  ///
+  static Future<SharedPreferences> get instance async =>
       _prefsInstance ??= await SharedPreferences.getInstance();
 
   static SharedPreferences? _prefsInstance;
@@ -43,7 +49,7 @@ class Prefs {
   /// Initialize the SharedPreferences object in the State object's iniState() function.
   static Future<SharedPreferences> init() async {
     _initCalled = true;
-    _prefsInstance ??= await INSTANCE;
+    _prefsInstance ??= await instance;
     return _prefsInstance!;
   }
 
@@ -61,9 +67,9 @@ class Prefs {
   /// Returns all keys in the persistent storage.
   static Set<String> getKeys() {
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getKeysF() instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.getKeysF() instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getKeys() ?? {};
   }
 
@@ -71,7 +77,7 @@ class Prefs {
   static Future<Set<String>> getKeysF() async {
     Set<String> value;
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.getKeys();
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -88,9 +94,9 @@ class Prefs {
       return false;
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.containsKeyF() instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.containsKeyF() instead. SharedPreferences not ready yet!');
     return _prefsInstance?.containsKey(key) ?? false;
   }
 
@@ -102,7 +108,7 @@ class Prefs {
       return false;
     }
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       contains = prefs.containsKey(key);
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -114,26 +120,26 @@ class Prefs {
 
   /// Reads a value of any type from persistent storage.
   /// Return null if key is null.
-  static dynamic get(String? key) {
+  static Object? get(String? key) {
     if (key == null) {
       return null;
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getF(key) instead. SharedPreferences not ready yet!");
-    return _prefsInstance?.get(key) ?? null;
+        'Maybe call Prefs.getF(key) instead. SharedPreferences not ready yet!');
+    return _prefsInstance?.get(key);
   }
 
   /// Returns a Future.
   /// Return null if key is null
-  static Future<dynamic> getF(String? key) async {
-    dynamic value;
+  static Future<Object?> getF(String? key) async {
+    Object? value;
     if (key == null) {
       return null;
     }
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.get(key);
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -144,26 +150,28 @@ class Prefs {
   }
 
   /// Return false if key is null
+  // ignore: avoid_positional_boolean_parameters
   static bool getBool(String? key, [bool? defValue]) {
     if (key == null) {
       return false;
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getBoolF(key) instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.getBoolF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getBool(key) ?? defValue ?? false;
   }
 
   /// Returns a Future.
   /// Returns false if key is null.
+  // ignore: avoid_positional_boolean_parameters
   static Future<bool> getBoolF(String? key, [bool? defValue]) async {
     if (key == null) {
       return false;
     }
     bool value;
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.getBool(key) ?? defValue ?? false;
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -179,9 +187,9 @@ class Prefs {
       return 0;
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getIntF(key) instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.getIntF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getInt(key) ?? defValue ?? 0;
   }
 
@@ -193,7 +201,7 @@ class Prefs {
       return 0;
     }
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.getInt(key) ?? defValue ?? 0;
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -209,9 +217,9 @@ class Prefs {
       return 0;
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getDoubleF(key) instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.getDoubleF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getDouble(key) ?? defValue ?? 0.0;
   }
 
@@ -223,7 +231,7 @@ class Prefs {
       return 0;
     }
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.getDouble(key) ?? defValue ?? 0.0;
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -239,9 +247,9 @@ class Prefs {
       return '';
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getStringF(key)instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.getStringF(key)instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getString(key) ?? defValue ?? '';
   }
 
@@ -253,7 +261,7 @@ class Prefs {
       return '';
     }
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.getString(key) ?? defValue ?? '';
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -269,9 +277,9 @@ class Prefs {
       return [''];
     }
     assert(_initCalled,
-        "Prefs.init() must be called first in an initState() preferably!");
+        'Prefs.init() must be called first in an initState() preferably!');
     assert(_prefsInstance != null,
-        "Maybe call Prefs.getStringListF(key) instead. SharedPreferences not ready yet!");
+        'Maybe call Prefs.getStringListF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getStringList(key) ?? defValue ?? [''];
   }
 
@@ -284,7 +292,7 @@ class Prefs {
       return [''];
     }
     if (_prefsInstance == null) {
-      final prefs = await INSTANCE;
+      final prefs = await instance;
       value = prefs.getStringList(key) ?? defValue ?? [''];
     } else {
       // SharedPreferences is available. Ignore init() function.
@@ -296,11 +304,12 @@ class Prefs {
 
   /// Saves a boolean [value] to persistent storage in the background.
   /// Returns false if key is null.
+  // ignore: avoid_positional_boolean_parameters
   static Future<bool> setBool(String? key, bool? value) async {
     if (key == null || value == null) {
       return false;
     }
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.setBool(key, value);
   }
 
@@ -310,7 +319,7 @@ class Prefs {
     if (key == null || value == null) {
       return false;
     }
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.setInt(key, value);
   }
 
@@ -321,7 +330,7 @@ class Prefs {
     if (key == null || value == null) {
       return false;
     }
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.setDouble(key, value);
   }
 
@@ -331,7 +340,7 @@ class Prefs {
     if (key == null || value == null) {
       return false;
     }
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.setString(key, value);
   }
 
@@ -341,7 +350,7 @@ class Prefs {
     if (key == null || value == null) {
       return false;
     }
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.setStringList(key, value);
   }
 
@@ -349,7 +358,7 @@ class Prefs {
   /// Use this method to observe modifications that were made in native code
   /// (without using the plugin) while the app is running.
   static Future<void> reload() async {
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.reload();
   }
 
@@ -359,13 +368,13 @@ class Prefs {
     if (key == null) {
       return false;
     }
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.remove(key);
   }
 
   /// Completes with true once the user preferences for the app has been cleared.
   static Future<bool> clear() async {
-    final prefs = await INSTANCE;
+    final prefs = await instance;
     return prefs.clear();
   }
 }

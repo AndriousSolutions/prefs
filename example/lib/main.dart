@@ -6,7 +6,9 @@ import 'package:prefs/prefs.dart';
 
 void main() => runApp(const PrefsDemoApp());
 
+///
 class PrefsDemoApp extends StatelessWidget {
+  ///
   const PrefsDemoApp({Key? key}) : super(key: key);
 
   @override
@@ -14,10 +16,12 @@ class PrefsDemoApp extends StatelessWidget {
       const MaterialApp(home: SharedPreferencesDemo());
 }
 
+///
 class SharedPreferencesDemo extends StatefulWidget {
+  ///
   const SharedPreferencesDemo({Key? key}) : super(key: key);
   @override
-  _SharedPreferencesDemoState createState() => _SharedPreferencesDemoState();
+  State<StatefulWidget> createState() => _SharedPreferencesDemoState();
 }
 
 class _SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
@@ -62,76 +66,79 @@ class _SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
 
   Widget get form => Form(
         key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-            Widget>[
-          TextFormField(
-            key: const Key('string'),
-            initialValue: Prefs.getString('string'),
-            onSaved: (String? newValue) => Prefs.setString('string', newValue),
-            decoration: const InputDecoration(
-              labelText: 'Enter one or two words',
-            ),
-            keyboardType: TextInputType.text,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.singleLineFormatter,
-            ],
-          ),
-          TextFormField(
-            key: const Key('integer'),
-            initialValue: Prefs.getInt('integer').toString(),
-            onSaved: (String? newValue) {
-              if (newValue!.isNotEmpty) {
-                Prefs.setInt('integer', int.parse(newValue));
-              }
-            },
-            decoration: const InputDecoration(
-              labelText: 'Enter a integer',
-            ),
-            keyboardType: const TextInputType.numberWithOptions(decimal: false),
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly,
-            ],
-          ),
-          TextFormField(
-            key: const Key('double'),
-            initialValue: Prefs.getDouble('double').toString(),
-            onSaved: (String? newValue) {
-              if (newValue!.isNotEmpty) {
-                Prefs.setDouble('double', double.parse(newValue));
-              }
-            },
-            decoration: const InputDecoration(
-              labelText: 'Enter a Double number',
-            ),
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            // inputFormatters: <TextInputFormatter>[
-            //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-            // ],
-          ),
-
-          // True - False Radio Button
-          _RadioButton(this),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                key: const Key('Save'),
-                onPressed: () {
-                  _formKey.currentState!.save();
-                  Prefs.setBool('boolean', _radioButton);
-                },
-                child: const Text('Save'),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              TextFormField(
+                key: const Key('string'),
+                initialValue: Prefs.getString('string'),
+                onSaved: (String? newValue) =>
+                    Prefs.setString('string', newValue),
+                decoration: const InputDecoration(
+                  labelText: 'Enter one or two words',
+                ),
+                keyboardType: TextInputType.text,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.singleLineFormatter,
+                ],
               ),
-            ),
-          ),
-        ]),
+              TextFormField(
+                key: const Key('integer'),
+                initialValue: Prefs.getInt('integer').toString(),
+                onSaved: (String? newValue) {
+                  if (newValue!.isNotEmpty) {
+                    Prefs.setInt('integer', int.parse(newValue));
+                  }
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Enter a integer',
+                ),
+                keyboardType: const TextInputType.numberWithOptions(),
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+              ),
+              TextFormField(
+                key: const Key('double'),
+                initialValue: Prefs.getDouble('double').toString(),
+                onSaved: (String? newValue) {
+                  if (newValue!.isNotEmpty) {
+                    Prefs.setDouble('double', double.parse(newValue));
+                  }
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Enter a Double number',
+                ),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                // inputFormatters: <TextInputFormatter>[
+                //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                // ],
+              ),
+
+              // True - False Radio Button
+              _RadioButton(this),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    key: const Key('Save'),
+                    onPressed: () {
+                      _formKey.currentState!.save();
+                      Prefs.setBool('boolean', _radioButton);
+                    },
+                    child: const Text('Save'),
+                  ),
+                ),
+              ),
+            ]),
       );
 
   Future<bool> initPrefs() async {
     // Initialize SharedPreferences
-    final SharedPreferences? prefs = await Prefs.init();
-    return prefs != null;
+    await Prefs.init();
+    return true;
   }
 }
 

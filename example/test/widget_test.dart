@@ -18,12 +18,12 @@ import '../lib/main.dart';
 
 import '../integration_test/integration_test.dart';
 
-String? dynamicKey = 'dynamic';
-String? booleanKey = 'boolean';
-String? integerKey = 'integer';
-String? doubleKey = 'double';
-String? stringKey = 'string';
-String? listKey = 'list';
+String dynamicKey = 'dynamic';
+String booleanKey = 'boolean';
+String integerKey = 'integer';
+String doubleKey = 'double';
+String stringKey = 'string';
+String listKey = 'list';
 
 void main() => testMyApp();
 
@@ -73,10 +73,19 @@ Future<void> _asyncTests() async {
   }
 
   /// Retrieve all the 'keys' in Shared Preferences if any.
-  Set<String> keys = await Prefs.getKeysF();
+  final Set<String> keys = await Prefs.getKeysF();
+
+  final testKeys = <String>{
+    dynamicKey,
+    booleanKey,
+    integerKey,
+    doubleKey,
+    stringKey,
+    listKey
+  };
 
   // If not preforming any integration testing.
-  if (keys.isEmpty) {
+  if (!keys.containsAll(testKeys)) {
     //
     set = await Prefs.setString(dynamicKey, 'whatever');
 

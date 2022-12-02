@@ -1,4 +1,9 @@
 
+## 4.0.0
+ December 02, 2022
+- static dynamic get(String? key) to static Object? get(String? key)
+- sdk: '>=2.18.5 <3.0.0'
+
 ## 3.5.0
  March 28, 2022
 - Return default value if _prefsInstance is null in production.
