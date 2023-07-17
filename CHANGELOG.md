@@ -1,9 +1,10 @@
 
-## 4.1.0
+## 4.1.0+1
  July 17, 2023
 - Up-to-date with plugin, SharedPreferences:
   static bool setPrefix(String prefix, {Set<String>? allowList}) {
 - sdk: '>=2.18.0 <4.0.0'
+- update LICENSE
 
 ## 4.0.0
  December 02, 2022
