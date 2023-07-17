@@ -32,12 +32,7 @@ export 'package:shared_preferences/shared_preferences.dart'
 // ignore: avoid_classes_with_only_static_members
 /// The App's Preferences.
 class Prefs {
-  ///
-  @Deprecated("Use lowercase getter 'instance' instead.")
-  // ignore: non_constant_identifier_names
-  static Future<SharedPreferences> get INSTANCE async => instance;
-
-  ///
+  /// Loads and parses the [SharedPreferences] for this app from disk.
   static Future<SharedPreferences> get instance async =>
       _prefsInstance ??= await SharedPreferences.getInstance();
 
@@ -376,5 +371,16 @@ class Prefs {
   static Future<bool> clear() async {
     final prefs = await instance;
     return prefs.clear();
+  }
+
+  /// Sets the prefix that is attached to all keys for all shared preferences.
+  /// Return false if called after SharedPreferences was instantiated.
+  static bool setPrefix(String prefix, {Set<String>? allowList}) {
+    // setPrefix cannot be called after getInstance
+    final set = !ready();
+    if (set) {
+      SharedPreferences.setPrefix(prefix, allowList: allowList);
+    }
+    return set;
   }
 }

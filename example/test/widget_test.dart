@@ -35,6 +35,10 @@ void testMyApp() {
 
   testWidgets('Preference Package Tester', (WidgetTester tester) async {
     //
+    var set = Prefs.setPrefix('test');
+    expect(set, isTrue,
+        reason: 'Allow set BEFORE SharedPreferences is instantiated.');
+
     await _asyncTests();
 
     const app = PrefsDemoApp();
@@ -46,6 +50,10 @@ void testMyApp() {
     /// Use pump() or pumpAndSettle() to ask Flutter to rebuild the widget.
     /// pumpAndSettle() waits for all animations to complete.
     await tester.pumpAndSettle();
+
+    set = Prefs.setPrefix('test');
+    expect(set, isFalse,
+        reason: "Can't be set after SharedPreferences is instantiated.");
 
     await integrationTesting(tester);
 
