@@ -36,10 +36,19 @@ class Prefs {
   static Future<SharedPreferences> get instance async =>
       _prefsInstance ??= await SharedPreferences.getInstance();
 
+  /// Loads and parses the [SharedPreferences] for this app from disk.
+  static Future<SharedPreferences> getInstance() async => instance;
+
   static SharedPreferences? _prefsInstance;
 
   /// In case the developer does not explicitly call the init() function.
   static bool _initCalled = false;
+
+  /// Initialize the SharedPreferences object and returns true when completed.
+  static Future<bool> initAsync() async {
+    await init();
+    return true;
+  }
 
   /// Initialize the SharedPreferences object in the State object's iniState() function.
   static Future<SharedPreferences> init() async {
@@ -56,6 +65,7 @@ class Prefs {
 
   /// Best to clean up by calling this function in the State object's dispose() function.
   static void dispose() {
+    _initCalled = false;
     _prefsInstance = null;
   }
 
@@ -88,8 +98,7 @@ class Prefs {
     if (key == null) {
       return false;
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.containsKeyF() instead. SharedPreferences not ready yet!');
     return _prefsInstance?.containsKey(key) ?? false;
@@ -119,8 +128,7 @@ class Prefs {
     if (key == null) {
       return null;
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.getF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.get(key);
@@ -150,8 +158,7 @@ class Prefs {
     if (key == null) {
       return false;
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.getBoolF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getBool(key) ?? defValue ?? false;
@@ -181,8 +188,7 @@ class Prefs {
     if (key == null) {
       return 0;
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.getIntF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getInt(key) ?? defValue ?? 0;
@@ -211,8 +217,7 @@ class Prefs {
     if (key == null) {
       return 0;
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.getDoubleF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getDouble(key) ?? defValue ?? 0.0;
@@ -241,8 +246,7 @@ class Prefs {
     if (key == null) {
       return '';
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.getStringF(key)instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getString(key) ?? defValue ?? '';
@@ -271,8 +275,7 @@ class Prefs {
     if (key == null) {
       return [''];
     }
-    assert(_initCalled,
-        'Prefs.init() must be called first in an initState() preferably!');
+    assert(_initCalled, 'Prefs.init() must be called first!');
     assert(_prefsInstance != null,
         'Maybe call Prefs.getStringListF(key) instead. SharedPreferences not ready yet!');
     return _prefsInstance?.getStringList(key) ?? defValue ?? [''];

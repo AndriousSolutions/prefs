@@ -6,7 +6,7 @@
 # .github
 
 # Ignore except for application packages
-pubspec.lock
+*.lock
 
 # Flutter IDE files
 .packages

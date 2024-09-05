@@ -1,4 +1,8 @@
 
+## 4.2.0
+ September 04, 2024
+- Introduce initAsync() and getInstance()
+
 ## 4.1.0+3
  July 17, 2023
 - Up-to-date with plugin, SharedPreferences:
